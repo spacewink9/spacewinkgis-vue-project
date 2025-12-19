@@ -133,12 +133,12 @@
 
 <script setup lang="ts">
 import { onMounted, reactive, ref } from "vue"
-import useLifecycle from "@mars/common/uses/use-lifecycle"
+import useLifecycle from "@/common/uses/use-lifecycle"
 import { TableProps } from "ant-design-vue"
-import { fetchJson } from "@mars/utils/mars-util"
+import { fetchJson } from "@/utils/mars-util"
 import type { Dayjs } from "dayjs"
 import * as mapWork from "./map"
-import { $alert, $notify, $message, $showLoading, $hideLoading } from "@mars/components/mars-ui/index"
+import { $alert, $notify, $message, $showLoading, $hideLoading } from "@/components/spacewink-ui/index"
 
 // 启用map.ts生命周期
 useLifecycle(mapWork)
@@ -202,12 +202,12 @@ const modelOptions = [
   {
     value: "jingche",
     label: "警车",
-    style: { scale: 8, url: "https://data.mars3d.cn/gltf/mars/jingche/jingche.gltf" }
+    style: { scale: 8, url: "https://data.spacewinkgis.cn/gltf/mars/jingche/jingche.gltf" }
   },
   {
     value: "qiche",
     label: "小汽车",
-    style: { scale: 1, url: "https://data.mars3d.cn/gltf/mars/qiche.gltf" }
+    style: { scale: 1, url: "https://data.spacewinkgis.cn/gltf/mars/qiche.gltf" }
   }
 ]
 
@@ -244,12 +244,12 @@ const marks: Record<number, any> = {
 }
 // 带刻度滑动条修改事件
 const onMarkSliderChange = () => {
-  mapWork.updateContrast(formState.contrast) //  调用地图方法
+  mapWork.updateContrast(formState.contrast) // Map related
 }
 
 // switch切换了
 const onSwitchChange = () => {
-  mapWork.enableMapMouseController(formState.isScale) // 调用地图方法
+  mapWork.enableMapMouseController(formState.isScale) // Map related
 }
 
 // 显示消息提示，自动消失
@@ -257,7 +257,7 @@ const onClickMessage = () => {
   $message("Message消息提示演示")
 }
 
-// 显示提示窗，不影响地图操作，会出现在页面右下角
+// Map related
 const onClickNotify = async () => {
   $notify("Notify提示窗", `该窗口会出现在页面右下角，不影响地图交互操作。`)
 }
@@ -289,7 +289,7 @@ const onClickLoading = async () => {
 const onClickTopLoading = () => {
   $message("演示顶部不遮盖的loaing,看上面", "warning")
 
-  $showLoading() //  top 调用出现在顶部的加载进度
+  $showLoading() // Load
   setTimeout(() => {
     $hideLoading()
     $message("演示加载失败提示", "error")
@@ -324,7 +324,7 @@ interface typhoon {
 const typhoonList = ref<typhoon[]>([]) // 列表数据
 onMounted(() => {
   // 访问后端接口，取台风列表数据
-  const url = "https://data.mars3d.cn/file/apidemo/typhoon/list_2020.json"
+  const url = "https://data.spacewinkgis.cn/file/apidemo/typhoon/list_2020.json"
   fetchJson({ url }).then(function (data: any) {
     typhoonList.value = data.typhoonList.map((item: any) => ({
       id: item[0],

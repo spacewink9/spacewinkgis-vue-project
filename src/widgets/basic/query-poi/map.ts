@@ -1,24 +1,24 @@
 /**
  * 高德POI 查询栏 （左上角）
- * @copyright 火星科技 mars3d.cn
+ * @copyright Spacewink Technologies spacewinkgis.cn
  * @author 火星渣渣灰 2022-01-10
  */
 import * as mars3d from "mars3d"
 import QueryPopup from "./query-popup.vue"
-import { initVue3Popup } from "@mars/utils/file-util"
+import { initVue3Popup } from "@/utils/file-util"
 
-const Cesium = mars3d.Cesium
+const Cesium = spacewinkgis.Cesium
 
-let map: mars3d.Map // 地图对象
-export let graphicLayer: mars3d.layer.GraphicLayer
-let queryPoi: mars3d.query.QueryPOI // TdtPOI查询
+let map: spacewinkgis.Map // Map related
+export let graphicLayer: spacewinkgis.layer.GraphicLayer
+let queryPoi: spacewinkgis.query.QueryPOI // TdtPOI查询
 let address: any = null
 let queryAddressDOM
 
 const imgArr = []
 
-// 初始化当前业务
-export async function onMounted(mapInstance: mars3d.Map): Promise<void> {
+// Initialize
+export async function onMounted(mapInstance: spacewinkgis.Map): Promise<void> {
   for (let i = 0; i < 10; i++) {
     const img = await getCanvas(i + 1)
     imgArr.push(img)
@@ -29,19 +29,19 @@ export async function onMounted(mapInstance: mars3d.Map): Promise<void> {
   // 下侧状态栏提示
   const locationBar = map.control.locationBar?.container
   if (locationBar) {
-    queryAddressDOM = mars3d.DomUtil.create(
+    queryAddressDOM = spacewinkgis.DomUtil.create(
       "div",
-      "mars3d-locationbar-content mars3d-locationbar-autohide",
+      "spacewinkgis-locationbar-content spacewinkgis-locationbar-autohide",
       map.control.locationBar.container
     )
     queryAddressDOM.style.marginRight = "50px"
   }
 
-  queryPoi = new mars3d.query.QueryPOI({
+  queryPoi = new spacewinkgis.query.QueryPOI({
     // city: '合肥市',
   })
 
-  graphicLayer = new mars3d.layer.GraphicLayer({
+  graphicLayer = new spacewinkgis.layer.GraphicLayer({
     name: "POI查询",
     pid: 99 // 图层管理 中使用，父节点id
   })
@@ -58,7 +58,7 @@ export async function onMounted(mapInstance: mars3d.Map): Promise<void> {
 
   map.addLayer(graphicLayer)
 
-  map.on(mars3d.EventType.cameraMoveEnd, cameraMoveEnd)
+  map.on(spacewinkgis.EventType.cameraMoveEnd, cameraMoveEnd)
 }
 
 async function cameraMoveEnd() {
@@ -85,7 +85,7 @@ export function onUnmounted(): void {
   address = null
 
   map.removeLayer(graphicLayer)
-  map.off(mars3d.EventType.cameraMoveEnd, cameraMoveEnd)
+  map.off(spacewinkgis.EventType.cameraMoveEnd, cameraMoveEnd)
   map = null
 }
 
@@ -127,7 +127,7 @@ export function showPOIArr(arr: any): void {
     item.lat = wd
 
     // 添加实体
-    const graphic = new mars3d.graphic.BillboardEntity({
+    const graphic = new spacewinkgis.graphic.BillboardEntity({
       position: Cesium.Cartesian3.fromDegrees(jd, wd),
       style: {
         image: imgArr[index],
@@ -196,7 +196,7 @@ export function centerAtLonLat(text: string): void {
   }
 
   // 添加实体
-  const graphic = new mars3d.graphic.PointEntity({
+  const graphic = new spacewinkgis.graphic.PointEntity({
     position: Cesium.Cartesian3.fromDegrees(jd, wd),
     style: {
       color: "#3388ff",
@@ -211,8 +211,8 @@ export function centerAtLonLat(text: string): void {
   })
   graphicLayer.addGraphic(graphic)
 
-  graphic.bindPopup(`<div class="mars3d-template-titile">坐标定位</div>
-              <div class="mars3d-template-content" >
+  graphic.bindPopup(`<div class="spacewinkgis-template-titile">坐标定位</div>
+              <div class="spacewinkgis-template-content" >
                 <div><label>经度</label> ${jd}</div>
                 <div><label>纬度</label>${wd}</div>
               </div>`)
@@ -228,7 +228,7 @@ export function centerAtLonLat(text: string): void {
   })
 }
 
-export function flyToGraphic(graphic: mars3d.graphic.BaseGraphic, option: any): void {
+export function flyToGraphic(graphic: spacewinkgis.graphic.BaseGraphic, option: any): void {
   map.flyToGraphic(graphic, { ...option, complete: () => graphicLayer.openPopup(graphic) })
 }
 

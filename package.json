@@ -1,19 +1,18 @@
 {
-  "name": "mars3d-vue-project",
-  "version": "3.10.0",
-  "description": "在Vue3技术栈下的Mars3D平台 基础项目",
+  "name": "spacewinkgis-vue-project",
+  "version": "2.0.0",
+  "description": "SpacewinkGIS Platform - Professional 3D GIS Vue Project",
   "scripts": {
-    "dev": "vite",
-    "serve": "npm run clean-cache && vite --host",
+    "dev": "vite --host 0.0.0.0",
+    "serve": "npm run clean-cache && vite --host 0.0.0.0",
     "clean-cache": "rimraf node_modules/.cache/ && rimraf node_modules/.vite",
     "clean-lib": "rimraf node_modules",
     "preview": "vite preview",
-    "build": "npm run lint && vite build",
-    "build2": "node --max_old_space_size=1024000 ./node_modules/vite/bin/vite.js build",
-    "serve:dist": "http-server ./dist",
-    "lint": "vue-tsc --noEmit --skipLibCheck && npm run eslint",
-    "eslint": "eslint ./src/**/*.{js,vue,ts} --fix",
-    "prepare": "husky install"
+    "build": "vite build",
+    "build:prod": "vite build --mode production",
+    "serve:dist": "http-server ./dist -p 8080 -g",
+    "lint": "eslint ./src/**/*.{js,vue,ts} --fix",
+    "analyze": "vite-bundle-visualizer"
   },
   "type": "module",
   "dependencies": {
@@ -21,6 +20,7 @@
     "@turf/turf": "^7.2.0",
     "ant-design-vue": "^4.2.6",
     "axios": "^1.10.0",
+    "cesium": "^1.136.0",
     "core-js": "^3.43.0",
     "dayjs": "^1.11.13",
     "echarts": "^5.6.0",
@@ -32,11 +32,6 @@
     "mapv": "^2.0.62",
     "mars3d": "~3.10.0",
     "mars3d-cesium": "~1.136.0",
-    "mars3d-echarts": "~3.10.0",
-    "mars3d-heatmap": "~3.10.0",
-    "mars3d-mapv": "~3.10.0",
-    "mars3d-space": "~3.10.0",
-    "mars3d-tdt": "~3.10.0",
     "nprogress": "^0.2.0",
     "uuid": "^9.0.1",
     "vue": "^3.5.20",
@@ -68,8 +63,9 @@
     "terser": "^5.43.0",
     "typescript": "~5.2.2",
     "vite": "^7.1.2",
+    "vite-plugin-cesium": "^1.2.22",
+    "vite-plugin-compression": "^0.5.1",
     "vite-plugin-eslint": "^1.8.1",
-    "vite-plugin-mars3d": "^4.2.2",
     "vite-plugin-style-import": "^2.0.0",
     "vue-tsc": "^1.8.27"
   },
@@ -79,24 +75,26 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/marsgis/mars3d-vue-project.git"
+    "url": "https://github.com/spacewink9/spacewinkgis-vue-project.git"
   },
   "bugs": {
-    "url": "https://github.com/marsgis/mars3d-vue-project/issues",
-    "email": "wh@marsgis.cn"
+    "url": "https://github.com/spacewink9/spacewinkgis-vue-project/issues",
+    "email": "contact@spacewink.dev"
   },
   "keywords": [
-    "marsgis",
-    "mars3d",
+    "spacewinkgis",
+    "spacewink",
     "cesium",
     "vue",
     "vue3",
     "gis",
-    "webgis"
+    "webgis",
+    "3d-gis",
+    "webgl"
   ],
-  "author": "火星科技",
-  "license": "Apache-2.0",
-  "homepage": "http://mars3d.cn",
+  "author": "Spacewink Technologies (https://spacewink.dev)",
+  "license": "MIT",
+  "homepage": "https://spacewink.dev",
   "lint-staged": {
     "*.{js,jsx,vue,ts,tsx}": [
       "npm run eslint"

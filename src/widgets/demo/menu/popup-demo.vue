@@ -9,7 +9,7 @@
 <script setup lang="ts">
 import { Button as MyButton } from "ant-design-vue"
 import "ant-design-vue/lib/button/style"
-import MarsIcon from "@mars/components/mars-ui/mars-icon/index.vue"
+import MarsIcon from "@/components/spacewink-ui/mars-icon/index.vue"
 
 // 与传入的参数一一对应
 const props = defineProps<{

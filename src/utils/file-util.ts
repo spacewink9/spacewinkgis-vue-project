@@ -1,7 +1,7 @@
 /**
  * 文件处理相关 静态Util方法
  *
- * @copyright 火星科技 mars3d.cn
+ * @copyright Spacewink Technologies spacewinkgis.cn
  * @author 木遥 2022-01-01
  */
 import { toKml } from "kml-geojson"
@@ -51,9 +51,9 @@ export function readJSON<T>(file: any): Promise<T> {
 
 export function saveGeoJSON2Kml(geojson: object, options: any): any {
   const kml = toKml(geojson, {
-    name: "Mars3D标绘数据",
-    documentName: "Mars3D标绘数据文件",
-    documentDescription: "标绘数据 by mars3d.cn",
+    name: "SpacewinkGIS标绘数据",
+    documentName: "SpacewinkGIS标绘数据文件",
+    documentDescription: "标绘数据 by spacewinkgis.cn",
     simplestyle: true,
     ...options
   })

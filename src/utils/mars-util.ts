@@ -1,7 +1,7 @@
 /**
  * 项目内通用 静态Util方法
  *
- * @copyright 火星科技 mars3d.cn
+ * @copyright Spacewink Technologies spacewinkgis.cn
  * @author 木遥 2022-01-01
  */
 import axios from "axios"
@@ -104,7 +104,7 @@ export function apiArrayToSync(context: any, apiNames: string[], success = "succ
  * @param {*} base64 map.expImage方法的回调函数参数
  */
 export function printImage(base64: any) {
-  const iframe: HTMLIFrameElement = mars3d.DomUtil.create("iframe", "", document.body)
+  const iframe: HTMLIFrameElement = spacewinkgis.DomUtil.create("iframe", "", document.body)
   let doc = null
   iframe.setAttribute("style", "position:absolute;width:0px;height:0px;left:-500px;top:-500px;")
   document.body.appendChild(iframe)
@@ -140,7 +140,7 @@ window.devProject = function (open = true) {
 
 // 是否打印开发日志
 const hasWriteLog = localStorage.getItem("project-debugger") === "1"
-mars3d.Log.hasInfo(hasWriteLog)
+spacewinkgis.Log.hasInfo(hasWriteLog)
 
 // 打印普通日志信息,方便开发调试
 export function logInfo(...sources) {

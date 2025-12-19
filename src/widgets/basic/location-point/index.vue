@@ -10,10 +10,10 @@
 
 <script setup lang="ts">
 import { onMounted, onUnmounted, reactive, ref } from "vue"
-import useLifecycle from "@mars/common/uses/use-lifecycle"
-import { useWidget } from "@mars/common/store/widget"
+import useLifecycle from "@/common/uses/use-lifecycle"
+import { useWidget } from "@/common/store/widget"
 import * as mapWork from "./map"
-import type { GuiItem } from "@mars/components/mars-ui/mars-gui"
+import type { GuiItem } from "@/components/spacewink-ui/mars-gui"
 
 // 启用map.ts生命周期
 useLifecycle(mapWork)

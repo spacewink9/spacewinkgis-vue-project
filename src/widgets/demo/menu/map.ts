@@ -1,16 +1,16 @@
 import * as mars3d from "mars3d"
 import PopupDemo from "./popup-demo.vue"
-import { initVue3Popup } from "@mars/utils/file-util"
+import { initVue3Popup } from "@/utils/file-util"
 
-export let map: mars3d.Map // 地图对象
-export let graphicLayer: mars3d.layer.GraphicLayer // 地图对象
+export let map: spacewinkgis.Map // Map related
+export let graphicLayer: spacewinkgis.layer.GraphicLayer // Map related
 
-// 初始化当前业务
-export function onMounted(mapInstance: mars3d.Map): void {
+// Initialize
+export function onMounted(mapInstance: spacewinkgis.Map): void {
   map = mapInstance // 记录map
 
   // 创建矢量数据图层
-  graphicLayer = new mars3d.layer.GraphicLayer()
+  graphicLayer = new spacewinkgis.layer.GraphicLayer()
   map.addLayer(graphicLayer)
 
   graphicLayer.bindPopup((event: any) => {
@@ -19,7 +19,7 @@ export function onMounted(mapInstance: mars3d.Map): void {
     return dom
   })
 
-  const graphic1 = new mars3d.graphic.PointEntity({
+  const graphic1 = new spacewinkgis.graphic.PointEntity({
     position: [117.194842, 31.831489, 41.21521],
     style: {
       color: "#ff0000",
@@ -31,7 +31,7 @@ export function onMounted(mapInstance: mars3d.Map): void {
   })
   graphicLayer.addGraphic(graphic1)
 
-  const graphic2 = new mars3d.graphic.DivGraphic({
+  const graphic2 = new spacewinkgis.graphic.DivGraphic({
     position: [117.229619, 31.8, 1521],
     pointerEvents: true,
     style: {

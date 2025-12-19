@@ -33,10 +33,10 @@
 
 <script lang="ts" setup>
 import { onUnmounted, ref, onMounted } from "vue"
-import useLifecycle from "@mars/common/uses/use-lifecycle"
+import useLifecycle from "@/common/uses/use-lifecycle"
 import * as mapWork from "./map"
-import { useWidget } from "@mars/common/store/widget"
-import { logInfo } from "@mars/utils/mars-util"
+import { useWidget } from "@/common/store/widget"
+import { logInfo } from "@/utils/mars-util"
 
 const { activate, disable, updateWidget, currentWidget } = useWidget()
 useLifecycle(mapWork)
@@ -66,10 +66,10 @@ const opacityValue = ref<{ id: number }>({} as any)
 
 let lastWidget: any
 
-// 初始化树构件
+// Initialize
 function initTree() {
   const showIds = [] // 是显示状态的图层id集合
-  const openIds = [] // 展开的树节点id集合（如果不想展开，对应图层配置open:false）
+  const openIds = [] // Configuration
 
   const result = mapWork.getLayrsTree({
     basemaps: true, // 是否取config.json中的basempas
@@ -113,7 +113,7 @@ function checkedChange(keys: string[], e: any) {
     const show = keys.indexOf(e.node.key) !== -1
     mapWork.updateLayerShow(layer, show)
 
-    // 特殊处理同目录下的单选的互斥的节点，可在config对应图层节点中配置"radio":true即可
+    // Configuration
     if (layer.options?.radio && e.checked) {
       // 循环所有的图层
       const layersM = mapWork.getLayerByAttr(layer.pid, "pid") // 与当前操作的图层的pid相同的图层

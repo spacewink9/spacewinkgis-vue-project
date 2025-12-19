@@ -1,31 +1,32 @@
 {
   "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
-    "moduleResolution": "node",
-    "strict": true,
+    "target": "ES2020",
     "useDefineForClassFields": true,
-    "forceConsistentCasingInFileNames": true,
-    "allowSyntheticDefaultImports": true,
-    "strictFunctionTypes": false,
-    "strictNullChecks": false,
-    "jsx": "preserve",
-    "allowJs": true,
-    "sourceMap": true,
-    "alwaysStrict": true,
-    "noImplicitAny": false,
-    "experimentalDecorators": true,
+    "module": "ESNext",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "isolatedModules": false,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "preserve",
+
+    /* Linting */
+    "strict": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noFallthroughCasesInSwitch": true,
+
+    /* Path mapping */
     "baseUrl": ".",
-    "outDir": "dist",
-    "types": ["vite/client", "node"],
-    "lib": ["esnext", "dom", "dom.iterable", "scripthost"],
     "paths": {
-      "@mars/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@/lib/*": ["src/lib/*"]
     }
   },
-  "include": ["src/**/*.ts", "packages/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "src/components/mars-work/expand/index.js"],
-  "exclude": ["node_modules", "src/**/*.js", "dist"]
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+  "references": [{ "path": "./tsconfig.node.json" }]
 }

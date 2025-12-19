@@ -25,8 +25,8 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue"
 import * as mapWork from "./map"
-import useLifecycle from "@mars/common/uses/use-lifecycle"
-import { useWidget } from "@mars/common/store/widget"
+import useLifecycle from "@/common/uses/use-lifecycle"
+import { useWidget } from "@/common/store/widget"
 
 const { currentWidget } = useWidget()
 

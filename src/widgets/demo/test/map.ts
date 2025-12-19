@@ -1,33 +1,33 @@
-import { logInfo } from "@mars/utils/mars-util"
+import { logInfo } from "@/utils/mars-util"
 import * as mars3d from "mars3d"
-const Cesium = mars3d.Cesium
+const Cesium = spacewinkgis.Cesium
 
-let map: mars3d.Map // 地图对象
-export const eventTarget = new mars3d.BaseClass()
+let map: spacewinkgis.Map // Map related
+export const eventTarget = new spacewinkgis.BaseClass()
 
 let currEffect // 当前生效的效果
 let weather
 // 雨效果
-const rainEffect = new mars3d.effect.Rain({
+const rainEffect = new spacewinkgis.effect.Rain({
   speed: 10,
   size: 20,
   direction: -30,
   enabled: false
 })
 // 雾效果
-const fogEffect = new mars3d.effect.Fog({
+const fogEffect = new spacewinkgis.effect.Fog({
   maxHeight: 20000, // 大于此高度后不显示
   fogByDistance: new Cesium.Cartesian4(1600, 0.0, 37602, 0.9),
   color: Cesium.Color.WHITE,
   enabled: false
 })
 
-const snowEffect = new mars3d.effect.Snow({
+const snowEffect = new spacewinkgis.effect.Snow({
   speed: 20,
   enabled: false
 })
 
-const snowCover = new mars3d.effect.SnowCover({
+const snowCover = new spacewinkgis.effect.SnowCover({
   maxHeight: 8000, // 大于此高度后不显示
   alpha: 0.2,
   enabled: false
@@ -36,7 +36,7 @@ const snowCover = new mars3d.effect.SnowCover({
 /**
  * 初始化地图业务，生命周期钩子函数（必须）
  * 框架在地图初始化完成后自动调用该函数
- * @param {mars3d.Map} mapInstance 地图对象
+ * @param {spacewinkgis.Map} mapInstance 地图对象
  * @returns {void} 无
  */
 export function onMounted(mapInstance) {

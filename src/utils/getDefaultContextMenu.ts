@@ -1,5 +1,5 @@
 import * as mars3d from "mars3d"
-import { $alert as globalAlert } from "@mars/components/mars-ui/index"
+import { $alert as globalAlert } from "@/components/spacewink-ui/index"
 import {
   Local,
   PreviewOpen,
@@ -55,14 +55,14 @@ import {
 
 const iconStyle: any = { theme: "outline", fill: "#fff", size: "18" }
 
-const Cesium = mars3d.Cesium
-const { LngLatPoint, Icon, CRS } = mars3d
-const { downloadFile, formatNum } = mars3d.Util
-const { addPositionsHeight } = mars3d.PointUtil
-const { proj4Trans } = mars3d.PointTrans
-const { logInfo } = mars3d.Log
-const { RotatePoint, Measure, KeyboardRoam } = mars3d.thing
-const { Bloom, Brightness, BlackAndWhite, NightVision, Outline, Rain, Snow, Fog } = mars3d.effect
+const Cesium = spacewinkgis.Cesium
+const { LngLatPoint, Icon, CRS } = spacewinkgis
+const { downloadFile, formatNum } = spacewinkgis.Util
+const { addPositionsHeight } = spacewinkgis.PointUtil
+const { proj4Trans } = spacewinkgis.PointTrans
+const { logInfo } = spacewinkgis.Log
+const { RotatePoint, Measure, KeyboardRoam } = spacewinkgis.thing
+const { Bloom, Brightness, BlackAndWhite, NightVision, Outline, Rain, Snow, Fog } = spacewinkgis.effect
 
 
 

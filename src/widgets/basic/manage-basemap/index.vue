@@ -10,7 +10,7 @@
   >
     <ul class="basemap">
       <li v-for="(item, i) in baseMaps" :key="i" class="basemap-card" :class="{ 'active-card': active === item.id }" @click="changeBaseMaps(item)">
-        <img class="icon" :src="`${item.options.icon || '//data.mars3d.cn/img/thumbnail/basemap/bingAerial.png'}`" />
+        <img class="icon" :src="`${item.options.icon || '//data.spacewinkgis.cn/img/thumbnail/basemap/bingAerial.png'}`" />
         <div class="name">{{ item.name }}</div>
       </li>
     </ul>
@@ -23,8 +23,8 @@
 
 <script setup lang="ts">
 import { ref, markRaw, onMounted, onUnmounted } from "vue"
-import useLifecycle from "@mars/common/uses/use-lifecycle"
-import { useWidget } from "@mars/common/store/widget"
+import useLifecycle from "@/common/uses/use-lifecycle"
+import { useWidget } from "@/common/store/widget"
 import * as mapWork from "./map"
 
 // 启用map.ts生命周期

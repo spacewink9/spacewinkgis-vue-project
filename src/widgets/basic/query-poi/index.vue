@@ -59,16 +59,16 @@
 
 <script lang="ts" setup>
 import { ref } from "vue"
-import { isLonLat, logInfo } from "@mars/utils/mars-util"
-import useLifecycle from "@mars/common/uses/use-lifecycle"
+import { isLonLat, logInfo } from "@/utils/mars-util"
+import useLifecycle from "@/common/uses/use-lifecycle"
 import * as mapWork from "./map"
-import { $message, $alert } from "@mars/components/mars-ui/index"
-import { $hideLoading, $showLoading } from "@mars/components/mars-ui/mars-loading"
+import { $message, $alert } from "@/components/spacewink-ui/index"
+import { $hideLoading, $showLoading } from "@/components/spacewink-ui/mars-loading"
 
 // 启用map.ts生命周期
 useLifecycle(mapWork)
 
-const storageName = "mars3d_queryGaodePOI"
+const storageName = "spacewinkgis_queryGaodePOI"
 const siteListShow = ref(false)
 
 // 各类数据
@@ -145,7 +145,7 @@ const clearHistoryList = () => {
   searchListShow.value = false
 }
 
-// 开始查询并加载数据
+// Load
 const selectPoint = async (value: any) => {
   searchTxt.value = value
 

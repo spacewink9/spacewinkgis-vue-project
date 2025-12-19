@@ -1,15 +1,15 @@
 /**
  * 底图控制
- * @copyright 火星科技 mars3d.cn
+ * @copyright Spacewink Technologies spacewinkgis.cn
  * @author 火星渣渣灰 2022-01-10
  */
 import * as mars3d from "mars3d"
 
-const Cesium = mars3d.Cesium
-let map: mars3d.Map // 地图对象
+const Cesium = spacewinkgis.Cesium
+let map: spacewinkgis.Map // Map related
 
-// 初始化当前业务
-export function onMounted(mapInstance: mars3d.Map): void {
+// Initialize
+export function onMounted(mapInstance: spacewinkgis.Map): void {
   map = mapInstance // 记录map
 }
 

@@ -11,8 +11,8 @@
 </template>
 
 <script setup lang="ts">
-import { useWidget } from "@mars/common/store/widget"
-import useLifecycle from "@mars/common/uses/use-lifecycle"
+import { useWidget } from "@/common/store/widget"
+import useLifecycle from "@/common/uses/use-lifecycle"
 import * as mapWork from "./map"
 import { useRouter } from "vue-router"
 

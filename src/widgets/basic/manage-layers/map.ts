@@ -1,20 +1,20 @@
 /**
  * 图层管理
- * @copyright 火星科技 mars3d.cn
+ * @copyright Spacewink Technologies spacewinkgis.cn
  * @author 火星渣渣灰 2022-01-10
  */
 import * as mars3d from "mars3d"
-const Cesium = mars3d.Cesium
+const Cesium = spacewinkgis.Cesium
 
-let map: mars3d.Map // 地图对象
+let map: spacewinkgis.Map // Map related
 
-// 初始化地图业务，生命周期钩子函数（必须）,框架在地图初始化完成后自动调用该函数
-export function onMounted(mapInstance: mars3d.Map) {
+// Map related
+export function onMounted(mapInstance: spacewinkgis.Map) {
   map = mapInstance // 记录首次创建的map
 
 }
 
-// 释放当前地图业务的生命周期函数,具体项目中时必须写onMounted的反向操作（如解绑事件、对象销毁、变量置空）
+// Map related
 export function onUnmounted() {
   map = null
 }
@@ -54,7 +54,7 @@ export function flytoModelNode(nodeid: number, nodesphere: any) {
   }
   // 构件节点位置
   let center = new Cesium.Cartesian3(nodesphere[0], nodesphere[1], nodesphere[2])
-  const tiles3dLayer: mars3d.layer.TilesetLayer = map.getLayerById(nodeid)
+  const tiles3dLayer: spacewinkgis.layer.TilesetLayer = map.getLayerById(nodeid)
 
   // 获取构件节点位置，现对于原始矩阵变化后的新位置
   center = tiles3dLayer.getPositionByOrginMatrix(center)

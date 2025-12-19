@@ -1,12 +1,12 @@
 /**
  * store 状态管理
- * @copyright 火星科技 mars3d.cn
+ * @copyright Spacewink Technologies spacewinkgis.cn
  * @author 火星渣渣灰 2022-02-19
  */
 import { Store, StoreOptions, createStore, useStore } from "vuex"
 import { InjectionKey, computed, nextTick, onUnmounted, inject } from "vue"
 import { v4 as uuidV4 } from "uuid"
-import { logInfo, logWarn } from "@mars/utils/mars-util"
+import { logInfo, logWarn } from "@/utils/mars-util"
 
 // 为 store state 声明类型
 export interface DefaultOption {
@@ -29,9 +29,9 @@ export interface Widget {
 }
 
 export interface WidgetState {
-  widgets: Widget[] // widget具体配置
-  openAtStart: string[] // 默认加载的widget
-  defaultOption?: DefaultOption // 支持配置默认参数
+  widgets: Widget[] // Configuration
+  openAtStart: string[] // Load
+  defaultOption?: DefaultOption // Configuration
 }
 
 export let key: InjectionKey<Store<WidgetState>> = Symbol("widget")

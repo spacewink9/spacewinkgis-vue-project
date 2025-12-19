@@ -22,7 +22,7 @@
 </template>
 
 <script setup lang="ts">
-import type { GuiItem } from "@mars/components/mars-ui/mars-gui"
+import type { GuiItem } from "@/components/spacewink-ui/mars-gui"
 import { ref } from "vue"
 
 const options: GuiItem[] = [

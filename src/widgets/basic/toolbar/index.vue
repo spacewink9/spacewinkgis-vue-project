@@ -45,11 +45,11 @@
 <script setup lang="ts">
 /**
  * 导航菜单按钮 （右上角）
- * @copyright 火星科技 mars3d.cn
+ * @copyright Spacewink Technologies spacewinkgis.cn
  * @author 火星渣渣灰 2022-01-10
  */
 import { ref } from "vue"
-import { useWidget } from "@mars/common/store/widget"
+import { useWidget } from "@/common/store/widget"
 
 const { currentWidget, activate, isActivate } = useWidget()
 
@@ -76,7 +76,7 @@ const data: any = [
       // { name: "地区导航", icon: "navigation", widget: "location-region" },
       // { name: "我的标记", icon: "mark", widget: "addmarker" },
       // { name: "视角书签", icon: "bookmark", widget: "bookmark" },
-      // { name: "地图打印", icon: "printer", widget: "print" },
+      // Map related
       // { name: "飞行漫游", icon: "take-off", widget: "roamLine-list" },
       // { name: "图上标绘", icon: "hand-painted-plate", widget: "graphic-plot" },
       // { name: "路线导航", icon: "connection", widget: "query-route" },

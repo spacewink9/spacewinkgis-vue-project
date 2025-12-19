@@ -6,13 +6,13 @@
 <script lang="ts" setup>
 import { toRaw, onMounted, ref } from "vue"
 import * as mapWork from "./map"
-import { $message } from "@mars/components/mars-ui/index"
-import { useWidget } from "@mars/common/store/widget"
-import { fetchJson } from "@mars/utils/mars-util"
+import { $message } from "@/components/spacewink-ui/index"
+import { useWidget } from "@/common/store/widget"
+import { fetchJson } from "@/utils/mars-util"
 
 const { currentWidget } = useWidget()
 
-// 加载拥有关联图层的树控件
+// Load
 const LayerTreeData = ref<any[]>([])
 
 let keyVal = 0

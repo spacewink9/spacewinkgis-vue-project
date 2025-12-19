@@ -9,8 +9,8 @@
 </template>
 
 <script setup lang="ts">
-import MarsMap from "@mars/components/mars-work/mars-map.vue"
-import { logInfo } from "@mars/utils/mars-util"
+import MarsMap from "@/components/spacewink-work/mars-map.vue"
+import { logInfo } from "@/utils/mars-util"
 import { useRouter } from "vue-router"
 
 const configUrl = `${process.env.BASE_URL}config/config.json`

@@ -1,14 +1,14 @@
 import * as mars3d from "mars3d"
 
 
-let map: mars3d.Map // 地图对象
+let map: spacewinkgis.Map // Map related
 
 // 事件对象，用于抛出事件给vue
-export const eventTarget = new mars3d.BaseClass()
+export const eventTarget = new spacewinkgis.BaseClass()
 
 
-// 初始化当前业务
-export function onMounted(mapInstance: mars3d.Map): void {
+// Initialize
+export function onMounted(mapInstance: spacewinkgis.Map): void {
   map = mapInstance // 记录map
 }
 
@@ -31,7 +31,7 @@ export function drawExtent(): void {
       outlineColor: "rgba(255,255,0,1)"
     },
     success: function (graphic: any) {
-      const rectangle = mars3d.PolyUtil.formatRectangle(graphic._rectangle_draw)
+      const rectangle = spacewinkgis.PolyUtil.formatRectangle(graphic._rectangle_draw)
       eventTarget.fire("drawExtent", { extent: JSON.stringify(rectangle) }) // 抛出事件，可以vue中去监听事件
     }
   })

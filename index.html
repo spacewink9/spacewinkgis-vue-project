@@ -1,18 +1,132 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
-
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" href="/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- Load SpacewinkGIS (Cesium) CSS -->
+  <link rel="stylesheet" href="/lib/spacewinkgis/mars3d.css" />
+  <link rel="stylesheet" href="/lib/mars3d-cesium/Build/Cesium/Widgets/widgets.css" />
+  
+  <!-- Load additional CSS -->
   <link rel="stylesheet" href="/img/div-graphic/divGraphic.css" />
-
-  <title>Mars3D通用三维可视化系统 - Vue版</title>
+  
+  <title>SpacewinkGIS - Professional 3D GIS Platform</title>
+  <meta name="description" content="SpacewinkGIS - Professional 3D Geographic Information System Platform" />
+  <meta name="keywords" content="GIS, 3D, WebGL, Cesium, SpacewinkGIS" />
+  <meta name="author" content="Spacewink Technologies" />
+  
+  <style>
+    /* Loading screen */
+    #loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease-out;
+    }
+    
+    #loading-screen.fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
+    
+    .loader {
+      width: 60px;
+      height: 60px;
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      border-top-color: #20a0ff;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    .loading-text {
+      color: white;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 18px;
+      margin-top: 20px;
+      letter-spacing: 1px;
+    }
+    
+    .loading-logo {
+      font-size: 32px;
+      font-weight: bold;
+      color: white;
+      margin-bottom: 30px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .progress-bar {
+      width: 200px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 2px;
+      margin-top: 20px;
+      overflow: hidden;
+    }
+    
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #20a0ff, #4db3ff);
+      width: 0%;
+      transition: width 0.3s ease;
+      animation: progress 2s ease-in-out infinite;
+    }
+    
+    @keyframes progress {
+      0% { width: 0%; }
+      50% { width: 70%; }
+      100% { width: 100%; }
+    }
+  </style>
+  
+  <!-- Load SpacewinkGIS library BEFORE Vue app -->
+  <script>
+    window.CESIUM_BASE_URL = '/lib/mars3d-cesium/Build/Cesium/'
+  </script>
+  <script src="/lib/spacewinkgis/mars3d.js"></script>
 </head>
-
 <body>
+  <!-- Loading Screen -->
+  <div id="loading-screen">
+    <div class="loading-logo">🌍 SpacewinkGIS</div>
+    <div class="loader"></div>
+    <div class="loading-text">Initializing 3D Earth...</div>
+    <div class="progress-bar">
+      <div class="progress-fill"></div>
+    </div>
+  </div>
+  
   <div id="app"></div>
-    <script type="module" src="/src/pages/map/main.ts"></script>
+  
+  <!-- Debug script to check if mars3d loaded -->
+  <script>
+    if (typeof mars3d === 'undefined') {
+      console.error('SpacewinkGIS core library failed to load!')
+      document.getElementById('loading-screen').innerHTML = `
+        <div style="color: white; text-align: center; padding: 20px;">
+          <h2>⚠️ Loading Error</h2>
+          <p>Core library failed to initialize.</p>
+          <p>Please refresh the page.</p>
+        </div>
+      `
+    } else {
+      console.log('SpacewinkGIS core library loaded successfully!')
+    }
+  </script>
+  
+  <script type="module" src="/src/pages/map/main.ts"></script>
 </body>
-
 </html>
