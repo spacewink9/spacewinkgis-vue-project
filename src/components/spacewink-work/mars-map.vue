@@ -7,7 +7,7 @@
   <div :id="withKeyId" class="spacewinkgis-container"></div>
 </template>
 <script setup lang="ts">
-import * as mars3d from "mars3d"
+import * as spacewinkgis from "@/lib/spacewinkgis-core"
 import "./expand/index" // Register
 import { getDefaultContextMenu } from "@/utils/getDefaultContextMenu"
 

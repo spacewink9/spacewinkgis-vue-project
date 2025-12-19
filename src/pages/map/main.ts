@@ -1,6 +1,6 @@
 import "font-awesome/css/font-awesome.css"
 
-// SpacewinkGIS library - Mars3D is loaded via script tag in index.html
+// SpacewinkGIS library - SpacewinkGIS is loaded via script tag in index.html
 import "@/components/spacewink-work/expand/index"
 
 import { createApp } from "vue"

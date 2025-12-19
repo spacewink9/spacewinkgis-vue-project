@@ -1,4 +1,4 @@
-import * as mars3d from "mars3d"
+import * as mars3d from "@/lib/spacewinkgis-core"
 const Cesium = mars3d.Cesium
 
 /**

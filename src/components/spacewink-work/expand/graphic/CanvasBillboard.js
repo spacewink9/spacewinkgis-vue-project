@@ -1,4 +1,4 @@
-import * as mars3d from "mars3d"
+import * as mars3d from "@/lib/spacewinkgis-core"
 
 // 通过Canvas绘制复杂或动态对象的图标点Graphic
 export class CanvasBillboard extends mars3d.graphic.BillboardPrimitive {

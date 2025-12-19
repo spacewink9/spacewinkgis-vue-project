@@ -5,16 +5,16 @@
   <link rel="icon" href="/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <!-- Load SpacewinkGIS (Cesium) CSS -->
-  <link rel="stylesheet" href="/lib/spacewinkgis/mars3d.css" />
-  <link rel="stylesheet" href="/lib/mars3d-cesium/Build/Cesium/Widgets/widgets.css" />
+  <!-- Load SpacewinkGIS Core CSS -->
+  <link rel="stylesheet" href="/lib/spacewinkgis/spacewinkgis.css" />
+  <link rel="stylesheet" href="/lib/spacewinkgis-cesium/Build/Cesium/Widgets/widgets.css" />
   
   <!-- Load additional CSS -->
   <link rel="stylesheet" href="/img/div-graphic/divGraphic.css" />
   
   <title>SpacewinkGIS - Professional 3D GIS Platform</title>
   <meta name="description" content="SpacewinkGIS - Professional 3D Geographic Information System Platform" />
-  <meta name="keywords" content="GIS, 3D, WebGL, Cesium, SpacewinkGIS" />
+  <meta name="keywords" content="GIS, 3D, WebGL, SpacewinkGIS, Geospatial" />
   <meta name="author" content="Spacewink Technologies" />
   
   <style>
@@ -92,18 +92,18 @@
     }
   </style>
   
-  <!-- Load SpacewinkGIS library BEFORE Vue app -->
+  <!-- Load SpacewinkGIS Core Engine -->
   <script>
-    window.CESIUM_BASE_URL = '/lib/mars3d-cesium/Build/Cesium/'
+    window.SPACEWINKGIS_CESIUM_BASE_URL = '/lib/spacewinkgis-cesium/Build/Cesium/'
   </script>
-  <script src="/lib/spacewinkgis/mars3d.js"></script>
+  <script src="/lib/spacewinkgis/spacewinkgis.js"></script>
 </head>
 <body>
   <!-- Loading Screen -->
   <div id="loading-screen">
     <div class="loading-logo">🌍 SpacewinkGIS</div>
     <div class="loader"></div>
-    <div class="loading-text">Initializing 3D Earth...</div>
+    <div class="loading-text">Initializing 3D Earth Engine...</div>
     <div class="progress-bar">
       <div class="progress-fill"></div>
     </div>
@@ -111,7 +111,7 @@
   
   <div id="app"></div>
   
-  <!-- Debug script to check if mars3d loaded -->
+  <!-- Initialize SpacewinkGIS -->
   <script>
     if (typeof mars3d === 'undefined') {
       console.error('SpacewinkGIS core library failed to load!')
@@ -123,7 +123,9 @@
         </div>
       `
     } else {
-      console.log('SpacewinkGIS core library loaded successfully!')
+      // Create SpacewinkGIS alias
+      window.spacewinkgis = window.mars3d;
+      console.log('✓ SpacewinkGIS Core Engine loaded successfully!')
     }
   </script>
   

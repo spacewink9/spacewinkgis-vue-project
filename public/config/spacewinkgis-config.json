@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "company": "Spacewink Technologies",
   "website": "https://spacewink.dev",
-  "cesiumBaseUrl": "/lib/mars3d-cesium/Build/Cesium/",
+  "cesiumBaseUrl": "/lib/spacewinkgis-cesium/Build/Cesium/",
   "features": {
     "3dGlobe": true,
     "terrain": true,
